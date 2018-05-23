@@ -39,18 +39,18 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Handles input for player
+// Handles input for player and prevents player from going offscreen
 Player.prototype.handleInput = function(key) {
-  if (key === 'left') {
+  if (key === 'left' && this.x > 0) {
   this.x -= 100;
   }
-  else if (key === 'right') {
+  else if (key === 'right' && this.x < 400) {
     this.x += 100;
   }
-  else if (key === 'up') {
+  else if (key === 'up' && this.y > 0) {
     this.y -= 80;
   }
-  else if (key === 'down') {
+  else if (key === 'down' && this.y < 400) {
     this.y += 80;
   }
 }
