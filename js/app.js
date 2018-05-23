@@ -32,6 +32,8 @@ Enemy.prototype.render = function() {
 // a handleInput() method.
 var Player = function() {
   this.sprite = 'images/char-cat-girl.png';
+  this.x = 200;
+  this.y = 400;
 }
 
 // Now instantiate your objects.
