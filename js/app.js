@@ -40,17 +40,17 @@ Player.prototype.render = function() {
 };
 
 // Handles input for player
-Player.protoype.handleInput = function(allowedKeys) {
-  if (allowedKeys === 'left') {
+Player.prototype.handleInput = function(key) {
+  if (key === 'left') {
   this.x -= 100;
   }
-  else if (allowedKeys === 'right') {
+  else if (key === 'right') {
     this.x += 100;
   }
-  else if (allowedKey === 'up') {
+  else if (key === 'up') {
     this.y -= 80;
   }
-  else if (allowedKeys === 'down') {
+  else if (key === 'down') {
     this.y += 80;
   }
 }
