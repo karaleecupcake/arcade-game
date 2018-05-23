@@ -48,12 +48,23 @@ Player.prototype.handleInput = function(key) {
     this.x += 100;
   }
   else if (key === 'up' && this.y > 0) {
-    this.y -= 80;
+    if (this.y < 81) {
+      this.reset();
+    }
+    else {
+      this.y -= 80;
+    }
   }
   else if (key === 'down' && this.y < 400) {
     this.y += 80;
   }
 }
+
+//Resets player location after reaching water
+Player.prototype.reset = function() {
+    this.x = 200;
+    this.y = 400;
+};
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
