@@ -75,11 +75,24 @@ Player.prototype.reset = function() {
     this.y = 400;
 };
 
+// Variables for Lives
+var Lives = function(x, y) {
+  this.sprite = 'images/Heart.png';
+  this.x = x;
+  this.y = y;
+}
+
+// Draws Lives
+Lives.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 50, 50);
+};
+
 // Instantiates objects
 // Places all Enemy objects in an array called allEnemies
 // Places Player object in a variable called player
 var allEnemies = [new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)];
 var player = new Player();
+var allLives = [new Lives(10, 0), new Lives(65, 0), new Lives(120,0)];
 
 // Listens for key presses and sends the keys to Player.handleInput() method.
 document.addEventListener('keyup', function(e) {

@@ -154,6 +154,10 @@ var Engine = (function(global) {
         });
 
         player.render();
+
+        allLives.forEach(function(lives){
+            lives.render();
+        });
     }
 
     /* This function does nothing but it could have been a good place to
@@ -175,7 +179,7 @@ var Engine = (function(global) {
         'images/enemy-bug.png',
         'images/char-boy.png',
         'images/char-cat-girl.png',
-        'images/heart.png',
+        'images/Heart.png',
         'images/gem blue.png'
     ]);
     Resources.onReady(init);
