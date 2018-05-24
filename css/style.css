@@ -1,3 +1,7 @@
 body {
     text-align: center;
 }
+header {
+  font-family: 'Lucida Sans Unicode', sans-serif;
+  color: #59B04E;
+}
