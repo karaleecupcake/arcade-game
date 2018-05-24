@@ -5,3 +5,6 @@ header {
   font-family: 'Lucida Sans Unicode', sans-serif;
   color: #59B04E;
 }
+canvas {
+    margin-top: -3em;
+}
