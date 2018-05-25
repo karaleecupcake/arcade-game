@@ -2,6 +2,7 @@
 var playerScore = 0;
 
 function startGame() {
+  startModal.style.display = 'block';
   play.addEventListener('click', function() {
   startModal.style.display = 'none';
   })
@@ -146,9 +147,12 @@ Gem.prototype.update = function() {
 
 // When game ends, resets playerScore and adds Lives
 function gameOver() {
+  endModal.style.display = 'block';
+  playAgain.addEventListener('click', function() {
+  endModal.style.display = 'none';
+  })
   playerScore = 0;
   allLives.push(new Lives(10, 50), new Lives(65, 50), new Lives(120, 50));
-  startModal.style.display = 'block';
 }
 
 // Instantiates objects
