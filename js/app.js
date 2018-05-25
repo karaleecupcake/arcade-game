@@ -1,3 +1,5 @@
+var playerScore = 0;
+
 // Enemies Player must avoid
 var Enemy = function(x, y, speed) {
     // Variables for Enemy
@@ -23,6 +25,10 @@ Enemy.prototype.update = function(dt) {
       this.y < player.y + 40 &&
       40 + this.y > player.y) {
         player.reset();
+        allLives.pop();
+        if (allLives.length === 0) {
+          gameOver();
+        }
     }
 };
 
@@ -58,6 +64,7 @@ Player.prototype.handleInput = function(key) {
   }
   else if (key === 'up' && this.y > 0) {
     if (this.y < 81) {
+      playerScore += 100;
       this.reset();
     }
     else {
@@ -87,12 +94,37 @@ Lives.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 50, 50);
 };
 
+// Variables for Score
+var Score = function(x, y, points) {
+  this.x = x;
+  this.y = y;
+  this.points = 'Score: ' + playerScore;
+};
+
+// Draws Score
+Score.prototype.render = function(){
+  ctx.font = '25px Verdana';
+  ctx.fillStyle = '#555555';
+  ctx.fillText(this.points, 333, 33);
+}
+
+// Updates Score
+Score.prototype.update = function(){
+    this.points = 'Score: ' + playerScore;
+}
+
+// Game over
+function gameOver() {
+  playerScore = 0;
+  allLives.push(new Lives(10, 0), new Lives(65, 0), new Lives(120,0));
+}
 // Instantiates objects
 // Places all Enemy objects in an array called allEnemies
 // Places Player object in a variable called player
-var allEnemies = [new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)];
+var allEnemies = [/*new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)*/];
 var player = new Player();
 var allLives = [new Lives(10, 0), new Lives(65, 0), new Lives(120,0)];
+var score = new Score(100, 0);
 
 // Listens for key presses and sends the keys to Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
