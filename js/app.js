@@ -1,4 +1,11 @@
+// Variables
 var playerScore = 0;
+
+function startGame() {
+  play.addEventListener('click', function() {
+  startModal.style.display = 'none';
+  })
+};
 
 // Enemies Player must avoid
 var Enemy = function(x, y, speed) {
@@ -89,7 +96,7 @@ var Lives = function(x, y) {
   this.y = y;
 }
 
-// Draws Lives
+// Draws Lives on the screen
 Lives.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y, 50, 50);
 };
@@ -101,7 +108,7 @@ var Score = function(x, y, points) {
   this.points = 'Score: ' + playerScore;
 };
 
-// Draws Score
+// Draws Score on the screen
 Score.prototype.render = function(){
   ctx.font = '30px Verdana';
   ctx.fillStyle = '#DFD9C8';
@@ -120,12 +127,12 @@ var Gem = function(x, y) {
   this.sprite = 'images/gem-blue.png';
 };
 
-// Draws Gem
+// Draws Gem on the screen
 Gem.prototype.render = function() {
   ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
-// Updates Gem
+// Updates Gem to move offscreen when collected and adds points to playerScore
 Gem.prototype.update = function() {
   if (this.x < player.x + 60 &&
     this.x + 60 > player.x &&
@@ -137,17 +144,17 @@ Gem.prototype.update = function() {
     };
 };
 
-
-// Game over
+// When game ends, resets playerScore and adds Lives
 function gameOver() {
   playerScore = 0;
   allLives.push(new Lives(10, 50), new Lives(65, 50), new Lives(120, 50));
+  startModal.style.display = 'block';
 }
 
 // Instantiates objects
 // Places all Enemy objects in an array called allEnemies
 // Places Player object in a variable called player
-var allEnemies = [/*new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)*/];
+var allEnemies = [new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)];
 var player = new Player();
 var allLives = [new Lives(10, 50), new Lives(65, 50), new Lives(120, 50)];
 var score = new Score(100, 0);
@@ -164,3 +171,5 @@ document.addEventListener('keyup', function(e) {
 
     player.handleInput(allowedKeys[e.keyCode]);
 });
+
+startGame();

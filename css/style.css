@@ -8,3 +8,33 @@ header {
 canvas {
     margin-top: -4em;
 }
+.modal {
+  position: absolute;
+  z-index: 1;
+  overflow: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.modalContent {
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  background: #FFFFFF;
+  font-size: 20px;
+  font-family: 'Verdana', sans-serif;
+  color: #59B04E;
+}
+
+#play {
+  background-color: #e5e5e1;
+  padding: 15px;
+  width: 50%;
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Verdana', sans-serif;
+  color: #4E66D2;
+  cursor: pointer;
+}
