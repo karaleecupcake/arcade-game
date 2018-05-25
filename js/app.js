@@ -113,6 +113,31 @@ Score.prototype.update = function(){
     this.points = 'Score: ' + playerScore;
 }
 
+// Variables for Gem
+var Gem = function(x, y) {
+  this.x = x;
+  this.y = y;
+  this.sprite = 'images/gem-blue.png';
+};
+
+// Draws Gem
+Gem.prototype.render = function() {
+  ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+};
+
+// Updates Gem
+Gem.prototype.update = function() {
+  if (this.x < player.x + 60 &&
+    this.x + 60 > player.x &&
+    this.y < player.y + 40 &&
+    40 + this.y > player.y) {
+      this.x = -100;
+      this.y = -100;
+      playerScore += 50;
+    };
+};
+
+
 // Game over
 function gameOver() {
   playerScore = 0;
@@ -126,6 +151,7 @@ var allEnemies = [/*new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-
 var player = new Player();
 var allLives = [new Lives(10, 50), new Lives(65, 50), new Lives(120, 50)];
 var score = new Score(100, 0);
+var gem = new Gem(100,50);
 
 // Listens for key presses and sends the keys to Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
