@@ -1,5 +1,6 @@
 // Variables
 var playerScore = 0;
+var endPoints = document.getElementById('endPoints');
 
 function startGame() {
   startModal.style.display = 'block';
@@ -126,6 +127,8 @@ var Gem = function(x, y) {
   this.x = x;
   this.y = y;
   this.sprite = 'images/gem-blue.png';
+  this.gemTime = undefined;
+  this.gemPosition();
 };
 
 // Draws Gem on the screen
@@ -142,11 +145,25 @@ Gem.prototype.update = function() {
       this.x = -100;
       this.y = -100;
       playerScore += 50;
+      this.gemWait();
     };
+};
+
+Gem.prototype.gemWait = function () {
+  this.gemTime = setTimeout( function() {
+       gem.gemPosition();
+   }, 5000);
+};
+
+
+Gem.prototype.gemPosition = function () {
+  this.x = (100 * Math.floor(Math.random() * 4) + 0);
+  this.y = (50 + (85 * Math.floor(Math.random() * 3) + 0));
 };
 
 // When game ends, resets playerScore and adds Lives
 function gameOver() {
+  endPoints.innerHTML = playerScore;
   endModal.style.display = 'block';
   playAgain.addEventListener('click', function() {
   endModal.style.display = 'none';
@@ -162,7 +179,7 @@ var allEnemies = [new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-10
 var player = new Player();
 var allLives = [new Lives(10, 50), new Lives(65, 50), new Lives(120, 50)];
 var score = new Score(100, 0);
-var gem = new Gem(100,50);
+var gem = new Gem();
 
 // Listens for key presses and sends the keys to Player.handleInput() method.
 document.addEventListener('keyup', function(e) {
