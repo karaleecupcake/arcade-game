@@ -2,6 +2,7 @@
 var playerScore = 0;
 var endPoints = document.getElementById('endPoints');
 
+// Shows the modal when game loads and adds event listener to button
 function startGame() {
   startModal.style.display = 'block';
   play.addEventListener('click', function() {
@@ -149,19 +150,20 @@ Gem.prototype.update = function() {
     };
 };
 
+// Waits to reset location of Gem
 Gem.prototype.gemWait = function () {
   this.gemTime = setTimeout( function() {
        gem.gemPosition();
    }, 5000);
 };
 
-
+// Randomly places Gem on stone tiles
 Gem.prototype.gemPosition = function () {
   this.x = (100 * Math.floor(Math.random() * 4) + 0);
   this.y = (50 + (85 * Math.floor(Math.random() * 3) + 0));
 };
 
-// When game ends, resets playerScore and adds Lives
+// When game ends, displays end Modal, resets playerScore, and adds Lives back
 function gameOver() {
   endPoints.innerHTML = playerScore;
   endModal.style.display = 'block';
