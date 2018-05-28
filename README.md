@@ -4,7 +4,7 @@
 This arcade game is a clone of the classic game Frogger. 
 
 ## Play the Game 
-Play the Arcade Game OR open `index.html` after cloning the repository
+Play the [Arcade Game](https://karaleecupcake.github.io/arcade-game/) OR open `index.html` after cloning the repository
 
 ## How to Play
 * Use the up, down, left, and right arrow keys to move the player
@@ -15,4 +15,3 @@ Play the Arcade Game OR open `index.html` after cloning the repository
 ## Scoring System
 * Reach the water to add 100 points
 * Collect a gem to add 50 points 
-
