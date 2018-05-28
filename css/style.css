@@ -18,9 +18,13 @@ canvas {
   justify-content: center;
   text-align: center;
   padding: 20px;
-  background: #FFFFFF;
   font-size: 20px;
   font-family: 'Verdana', sans-serif;
+
+}
+
+#startModal {
+  background: #FFFFFF;
   color: #59B04E;
 }
 
@@ -40,12 +44,13 @@ canvas {
   display: none;
   background: #FF0000;
   color: #FFFFFF;
+  padding: 50px;
 }
 
 #playAgain {
   background-color: #e5e5e1;
   padding: 15px;
-  width: 50%;
+  margin-top: 25px;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
