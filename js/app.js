@@ -175,7 +175,7 @@ function gameOver() {
 // Instantiates objects
 // Places all Enemy objects in an array called allEnemies
 // Places Player object in a variable called player
-var allEnemies = [new Enemy(0, 60, 125), new Enemy(-200, 60, 100), new Enemy(-100, 140, 175), new Enemy(-225, 140, 125), new Enemy(0, 220, 100), new Enemy(-250, 220, 150)];
+var allEnemies = [new Enemy(0, 60, 325), new Enemy(0, 140, 375), new Enemy(0, 220, 350)];
 var player = new Player();
 var allLives = [new Lives(10, 50), new Lives(65, 50), new Lives(120, 50)];
 var score = new Score(100, 0);
